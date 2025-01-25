@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Page - Equipment Rental</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Custom CSS -->
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #2c3e50 !important;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
+
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+
+    .logospan {
+      color: #fff;
+    }
+
+    .logospan span {
+      color: #FFA500;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-link:hover {
+      color: #FFA500 !important;
+      transform: translateY(-3px);
+    }
+
+    .nav-link.active {
+      color: #FFA500 !important;
+      font-weight: bold;
+    }
+
+    .navbar-toggler {
+      border: none;
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: none;
+      position: relative;
+      width: 24px;
+      height: 2px;
+      background-color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-toggler-icon::before {
+      transform: translateY(-6px);
+    }
+
+    .navbar-toggler-icon::after {
+      transform: translateY(6px);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background-color: transparent;
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+      transform: rotate(45deg);
+    }
+
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+      transform: rotate(-45deg);
+    }
+
+    .profile-cart {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: auto;
+    }
+
+    .profile-cart a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-cart a:hover {
+      color: #FFA500;
+      transform: translateY(-3px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      background-image: url('https://via.placeholder.com/1920x600');
+      /* صورة الخلفية */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* طبقة داكنة فوق الصورة */
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-buttons .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-buttons .btn-primary {
+      background-color: #FFA500;
+      border: none;
+    }
+
+    .hero-buttons .btn-primary:hover {
+      background-color: #e69500;
+      transform: translateY(-3px);
+    }
+
+    .hero-buttons .btn-secondary {
+      background-color: #6c757d;
+      border: none;
+    }
+
+    .hero-buttons .btn-secondary:hover {
+      background-color: #5a6268;
+      transform: translateY(-3px);
+    }
+
+    /* Swiper Container */
+    .swiper {
+      width: 100%;
+      height: 100%;
+      padding: 20px 0;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 300px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-text {
+      color: #666;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .card-price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .card-rating {
+      color: #FFA500;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-rating i {
+      margin-right: 0.25rem;
+    }
+
+    .card-button {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #FFA500;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card-button:hover {
+      background-color: #e69500;
+    }
+
+    /* Swiper Navigation Buttons */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #FFA500;
+    }
+
+    /* Swiper Pagination */
+    .swiper-pagination-bullet {
+      background-color: #FFA500;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 4rem 2rem;
+    }
+
+    .footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #FFA500;
+    }
+
+    .footer-section p {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .footer-section ul li i {
+      margin-right: 0.5rem;
+      color: #FFA500;
+    }
+
+    .footer-section a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: #FFA500;
+    }
+
+    /* Newsletter Form */
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      padding: 0.75rem 1.5rem;
+      background-color: #FF6B35;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #e65a2b;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #FFA500;
+    }
+
+    /* Copyright */
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      margin: auto;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .popup-content .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .popup-content h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .popup-content .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .popup-content .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .popup-content .form-group input,
+    .popup-content .form-group textarea,
+    .popup-content .form-group select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .popup-content button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #FFA500;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-content button:hover {
+      background-color: #e69500;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+    <div class="container-fluid">
+      <p class="navbar-brand fw-bold">
+        <span class="logospan"> <span style="color:#FFA500;">Industrial</span>Rentals</span>
+      </p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" id="active-nav" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white fw-bold position-relative"
+              href="../htmlPages/shopPage.html">Rentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../htmlPages/aboutUsPage.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../htmlPages/contactUsPage.html">Contact Us</a>
+          </li>
+        </ul>
+        <div class="profile-cart">
+          <a href="../htmlPages/userPage.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a href="../htmlPages/cartPage.html">
+            <i class="fa-solid fa-basket-shopping"></i> Cart
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Find the Perfect Equipment for Every Project</h1>
+      <p>Explore our collection of high-quality tools and machinery for all your needs. Rent with ease and efficiency!
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" id="addEquipmentButtonHero">Add Your Listing</button>
+        <button class="btn btn-secondary" onclick="scrollToCards()">Explore</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filters mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter" class="form-select">
+            <option value="all">All Categories</option>
+            <option value="heavyMachinery">Heavy Machinery</option>
+            <option value="powerTools">Power Tools</option>
+            <option value="agriculturalEquipment">Agricultural Equipment</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="priceFilter">Price Range</label>
+          <select id="priceFilter" class="form-select">
+            <option value="all">All Prices</option>
+            <option value="0-100">$0 - $100</option>
+            <option value="100-500">$100 - $500</option>
+            <option value="500-1000">$500 - $1000</option>
+            <option value="1000+">$1000+</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="sortBy">Sort By</label>
+          <select id="sortBy" class="form-select">
+            <option value="priceLowToHigh">Price: Low to High</option>
+            <option value="priceHighToLow">Price: High to Low</option>
+            <option value="rating">Rating</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper" id="cards-container">
+      <!-- Cards will be dynamically inserted here -->
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>Industrial Rentals provides high-quality equipment for construction, agriculture, and industrial needs.
+            Rent with ease and efficiency.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Rentals</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class='bx bx-map'></i> 123 Industrial Street, City, Country</li>
+            <li><i class='bx bx-phone'></i> +123 456 7890</li>
+            <li><i class='bx bx-envelope'></i> info@industrialrentals.com</li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-section">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="copyright">&copy; 2023 Industrial Rentals. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Add Equipment Popup -->
+  <div id="addEquipmentPopup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>Add New Equipment</h2>
+      <form id="addEquipmentForm">
+        <div class="form-group">
+          <label for="equipmentName">Name</label>
+          <input type="text" id="equipmentName" required>
+        </div>
+        <div class="form-group">
+          <label for="equipmentDescription">Description</label>
+          <textarea id="equipmentDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="equipmentPrice">Price</label>
+          <input type="number" id="equipmentPrice" required>
+        </div>
+        <div class="form-group">
+          <label for="equipmentImage">Image URL</label>
+          <input type="url" id="equipmentImage" required>
+        </div>
+        <div class="form-group">
+          <label for="equipmentCategory">Category</label>
+          <select id="equipmentCategory" required>
+            <option value="heavyMachinery">Heavy Machinery</option>
+            <option value="powerTools">Power Tools</option>
+            <option value="agriculturalEquipment">Agricultural Equipment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="equipmentLocation">Location</label>
+          <input type="text" id="equipmentLocation" required>
+        </div>
+        <div class="form-group">
+          <label for="equipmentContact">Contact Info</label>
+          <input type="text" id="equipmentContact" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Equipment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Firebase and Custom JS -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2C4Djv2h0dMRluFw6NFSfQFtfkzZ6FAU",
+      authDomain: "masterproject-158b4.firebaseapp.com",
+      projectId: "masterproject-158b4",
+      storageBucket: "masterproject-158b4.firebasestorage.app",
+      messagingSenderId: "632368585512",
+      appId: "1:632368585512:web:0a0100256c7cbd27cf8e1d",
+      measurementId: "G-S33GMFE8W2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let swiper; // تعريف متغير Swiper خارجي
+
+    function initializeSwiper() {
+      swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    }
+
+    // Open Add Equipment Popup
+    document.getElementById("addEquipmentButtonHero").addEventListener("click", () => {
+      document.getElementById("addEquipmentPopup").style.display = "flex";
+    });
+
+    // Close Add Equipment Popup
+    document.querySelector(".close").addEventListener("click", () => {
+      document.getElementById("addEquipmentPopup").style.display = "none";
+    });
+
+    // Add Equipment Form Submission
+    document.getElementById("addEquipmentForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("equipmentName").value;
+      const description = document.getElementById("equipmentDescription").value;
+      const price = document.getElementById("equipmentPrice").value;
+      const image = document.getElementById("equipmentImage").value;
+      const category = document.getElementById("equipmentCategory").value;
+      const location = document.getElementById("equipmentLocation").value;
+      const contact = document.getElementById("equipmentContact").value;
+
+      try {
+        await addDoc(collection(db, "equipment"), {
+          name,
+          description,
+          price: parseFloat(price),
+          image,
+          category,
+          location,
+          contact,
+          available: true,
+          rating: Math.floor(Math.random() * 5) + 1
+        });
+
+        alert("Equipment added successfully!");
+        document.getElementById("addEquipmentPopup").style.display = "none";
+        document.getElementById("addEquipmentForm").reset();
+        fetchAndRenderEquipment();
+      } catch (error) {
+        console.error("Error adding equipment:", error);
+        alert("Failed to add equipment.");
+      }
+    });
+
+    // Fetch and Render Equipment with Filters and Sorting
+    async function fetchAndRenderEquipment() {
+      const categoryFilter = document.getElementById("categoryFilter").value;
+      const priceFilter = document.getElementById("priceFilter").value;
+      const sortBy = document.getElementById("sortBy").value;
+
+      let q = collection(db, "equipment");
+
+      if (categoryFilter !== "all") {
+        q = query(q, where("category", "==", categoryFilter));
+      }
+
+      if (priceFilter !== "all") {
+        const [minPrice, maxPrice] = priceFilter.split("-").map(Number);
+        q = query(q, where("price", ">=", minPrice), where("price", "<=", maxPrice));
+      }
+
+      if (sortBy === "priceLowToHigh") {
+        q = query(q, orderBy("price", "asc"));
+      } else if (sortBy === "priceHighToLow") {
+        q = query(q, orderBy("price", "desc"));
+      } else if (sortBy === "rating") {
+        q = query(q, orderBy("rating", "desc"));
+      }
+
+      try {
+        const querySnapshot = await getDocs(q);
+        const cardsContainer = document.getElementById("cards-container");
+        cardsContainer.innerHTML = "";
+
+        querySnapshot.forEach((doc) => {
+          const equipment = doc.data();
+          const equipmentCard = renderEquipmentCard(equipment, doc.id);
+          cardsContainer.appendChild(equipmentCard);
+        });
+
+        if (swiper) {
+          swiper.destroy();
+        }
+        initializeSwiper();
+      } catch (error) {
+        console.error("Error fetching equipment:", error);
+      }
+    }
+
+    function renderEquipmentCard(equipment, id) {
+      const card = document.createElement("div");
+      card.classList.add("swiper-slide");
+
+      card.innerHTML = `
+        <div class="card">
+          <img src="${equipment.image}" class="card-img-top" alt="${equipment.name}">
+          <div class="card-body">
+            <h5 class="card-title">${equipment.name}</h5>
+            <p class="card-text">${equipment.description}</p>
+            <p class="card-text">Price: $${equipment.price}/day</p>
+            <p class="card-text">Location: ${equipment.location}</p>
+            <p class="card-text">Contact: ${equipment.contact}</p>
+            <div class="card-rating">
+              ${renderRatingStars(equipment.rating)}
+            </div>
+            <button class="btn btn-primary" onclick="window.location.href='../htmlPages/ProductPage.html?id=${id}'">Rent Now</button>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function renderRatingStars(rating) {
+      let stars = "";
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          stars += `<i class="fas fa-star"></i>`;
+        } else {
+          stars += `<i class="far fa-star"></i>`;
+        }
+      }
+      return stars;
+    }
+
+    document.getElementById("categoryFilter").addEventListener("change", fetchAndRenderEquipment);
+    document.getElementById("priceFilter").addEventListener("change", fetchAndRenderEquipment);
+    document.getElementById("sortBy").addEventListener("change", fetchAndRenderEquipment);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchAndRenderEquipment();
+      initializeSwiper();
+    });
+
+
+    // Function to get query parameters from the URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Retrieve userID from the URL
+    const userID = getQueryParam("userID");
+
+    if (userID) {
+      // Fetch user data from Firestore
+      const userDoc = await getDoc(doc(db, "users", userID));
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const userName = userData.name; // Assuming the user's name is stored in the "name" field
+
+        // Update the profile link to show the user's name
+        const profileLink = document.querySelector(".profile-cart a[href='../htmlPages/userPage.html']");
+        if (profileLink) {
+          profileLink.innerHTML = `<i class="fa-solid fa-user"></i> ${userName}`;
+        }
+
+        // Update the welcome message
+        const welcomeMessage = document.getElementById("welcome-message");
+        if (welcomeMessage) {
+          welcomeMessage.textContent = userName;
+        }
+
+        // Update all links to include userID
+        const links = document.querySelectorAll("a[href]");
+        links.forEach(link => {
+          const href = link.getAttribute("href");
+          if (href && !href.includes("userID")) {
+            link.href = `${href}?userID=${userID}`;
+          }
+        });
+      } else {
+        console.log("No user data found.");
+      }
+    } else {
+      console.log("No userID found in the URL.");
+      // Redirect to login page or show an error message
+      window.location.href = "../htmlPages/login.html";
+    }
+
+    function scrollToCards() {
+      document.querySelector('#cards-container').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+
+</html>

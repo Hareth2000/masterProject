@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .product-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .product-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-details {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .product-details h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .product-details p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .additional-info {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .additional-info h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .additional-info p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .comments-section {
+      margin-top: 30px;
+    }
+
+    .comment-form {
+      margin-bottom: 20px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .comment-form button {
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background-color: #1a2530;
+    }
+
+    .comment {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .comment p {
+      margin: 0;
+    }
+
+    .comment .rating {
+      color: #FFA500;
+      margin-bottom: 5px;
+    }
+
+    .comment .user {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .comment .timestamp {
+      font-size: 0.8rem;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="logo" width="30" height="30" class="d-inline-block align-text-top">
+        IndustrialRentals
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./homeUserPage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./shopPage.html">Rentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./aboutUsPage.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contactUsPage.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./userPage.html"><i class="fa-solid fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cartPage.html"><i class="fa-solid fa-basket-shopping"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Product Details -->
+  <div class="container">
+    <div class="product-info">
+      <div class="product-image">
+        <img id="productImage" src="https://via.placeholder.com/400" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h2 id="productName">Product Name</h2>
+        <p id="productDescription">Product Description</p>
+        <p id="productPrice">Price: $0/day</p>
+        <p id="productLocation">Location: Unknown</p>
+        <p id="productContact">Contact: Unknown</p>
+        <div class="card-rating" id="productRating"></div>
+        <!-- زر إضافة إلى السلة -->
+        <button id="addToCartButton" class="btn btn-primary">Add to Cart</button>
+      </div>
+    </div>
+    <div class="additional-info">
+      <h3>Additional Information</h3>
+      <p>More details about the product...</p>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h3>Comments & Ratings</h3>
+      <div class="comment-form">
+        <textarea id="commentInput" placeholder="Write your comment..."></textarea>
+        <select id="ratingInput">
+          <option value="1">1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+        <button id="submitCommentButton">Submit</button>
+      </div>
+      <div id="commentsList"></div>
+    </div>
+  </div>
+
+  <!-- Firebase and Custom JS -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2C4Djv2h0dMRluFw6NFSfQFtfkzZ6FAU",
+      authDomain: "masterproject-158b4.firebaseapp.com",
+      projectId: "masterproject-158b4",
+      storageBucket: "masterproject-158b4.appspot.com",
+      messagingSenderId: "632368585512",
+      appId: "1:632368585512:web:0a0100256c7cbd27cf8e1d",
+      measurementId: "G-S33GMFE8W2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Fetch Product Details
+    async function fetchProductDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      console.log("Fetching product details for ID:", productId);
+
+      if (productId) {
+        const docRef = doc(db, "equipment", productId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const product = docSnap.data();
+          console.log("Product data:", product);
+          document.getElementById('productName').textContent = product.name;
+          document.getElementById('productDescription').textContent = product.description;
+          document.getElementById('productPrice').textContent = `Price: $${product.price}/day`;
+          document.getElementById('productLocation').textContent = `Location: ${product.location}`;
+          document.getElementById('productContact').textContent = `Contact: ${product.contact}`;
+          document.getElementById('productImage').src = product.image;
+          document.getElementById('productRating').innerHTML = renderRatingStars(product.rating);
+        } else {
+          console.log("No such document!");
+        }
+      } else {
+        console.log("No product ID found in URL.");
+      }
+    }
+
+    // Render Rating Stars
+    function renderRatingStars(rating) {
+      let stars = "";
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          stars += `<i class="fas fa-star"></i>`;
+        } else {
+          stars += `<i class="far fa-star"></i>`;
+        }
+      }
+      return stars;
+    }
+
+    // Submit Comment
+    async function submitComment() {
+      const comment = document.getElementById('commentInput').value.trim();
+      const rating = document.getElementById('ratingInput').value;
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      console.log("Submitting comment:", comment, "Rating:", rating);
+
+      if (comment && productId) {
+        try {
+          await addDoc(collection(db, "comments"), {
+            productId: productId,
+            comment: comment,
+            rating: parseInt(rating),
+            timestamp: new Date().toISOString(),
+            user: "Anonymous"
+          });
+          console.log("Comment submitted successfully!");
+          document.getElementById('commentInput').value = ""; // Clear input
+          fetchComments(); // Refresh comments list
+        } catch (error) {
+          console.error("Error adding comment:", error);
+        }
+      }
+    }
+
+    // Fetch and Display Comments
+    async function fetchComments() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      const commentsList = document.getElementById('commentsList');
+      commentsList.innerHTML = ""; // Clear existing comments
+      console.log("Fetching comments for product ID:", productId);
+
+      if (productId) {
+        const q = query(collection(db, "comments"), where("productId", "==", productId));
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+          const comment = doc.data();
+          console.log("Comment data:", comment);
+          const commentElement = document.createElement('div');
+          commentElement.classList.add('comment');
+          commentElement.innerHTML = `
+            <div class="rating">${renderRatingStars(comment.rating)}</div>
+            <p>${comment.comment}</p>
+            <div class="user">${comment.user}</div>
+            <div class="timestamp">${new Date(comment.timestamp).toLocaleString()}</div>
+          `;
+          commentsList.appendChild(commentElement);
+        });
+      }
+    }
+
+    // Function to add product to cart
+    async function addToCart() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      const userId = "user123"; // استبدل هذا بقيمة المستخدم الفعلية (يمكن الحصول عليها من تسجيل الدخول)
+
+      if (productId && userId) {
+        try {
+          // Add product to cart in Firestore
+          await addDoc(collection(db, "cart"), {
+            productId: productId,
+            userId: userId, // إضافة userId إلى بيانات السلة
+            timestamp: new Date().toISOString()
+          });
+          alert("Product added to cart successfully!");
+        } catch (error) {
+          console.error("Error adding product to cart:", error);
+          alert("Failed to add product to cart.");
+        }
+      } else {
+        console.log("No product ID or user ID found.");
+      }
+    }
+
+    // Fetch product details and comments when the page loads
+    window.onload = () => {
+      fetchProductDetails();
+      fetchComments();
+    };
+
+    // Add event listener to the submit button
+    document.getElementById('submitCommentButton').addEventListener('click', submitComment);
+
+    // Add event listener to the Add to Cart button
+    document.getElementById('addToCartButton').addEventListener('click', addToCart);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  animation: fadeIn 1s ease-in-out;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  animation: slideIn 1s ease-in-out;
+  max-height: 90vh; /* تحديد ارتفاع أقصى للبطاقة */
+  overflow-y: auto; /* تمكين التمرير عند الحاجة */
+}
+
+.bg-primary {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.bg-light {
+  background: #ffffff;
+}
+
+/* Left Side Styles */
+.bg-primary h2 {
+  font-size: 2.5rem;
+  animation: bounceIn 1s ease-in-out;
+}
+
+.bg-primary p {
+  font-size: 1.2rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.bg-primary .fa-users {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Right Side Styles */
+.nav-pills .nav-link {
+  border-radius: 20px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+  background: #2575fc;
+  color: #fff;
+}
+
+.nav-pills .nav-link:hover {
+  transform: translateY(-3px);
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #2575fc;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1a5bbf;
+  transform: translateY(-3px);
+}
+
+.btn-success {
+  background: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #218838;
+  transform: translateY(-3px);
+}
+
+/* Additional Styles for New Fields */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-control::placeholder {
+  color: #aaa;
+}
+
+/* Forgot Password Link */
+.text-end a {
+  color: #2575fc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.text-end a:hover {
+  color: #1a5bbf;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Adjustments for Register Form */
+#register {
+  max-height: 60vh; /* تحديد ارتفاع أقصى للنموذج */
+  overflow-y: auto; /* تمكين التمرير عند الحاجة */
+  padding-right: 10px; /* إضافة مساحة للتمرير */
+}
