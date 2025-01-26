@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Log In & Registration</title>
+  <title>Industrial Tools Rental - Login & Registration</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css pages/login.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     /* General Styles */
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #1a2a6c, #333333);
+      background: linear-gradient(135deg, #0a1f3d, #1c3a5c);
       margin: 0;
       padding: 0;
       overflow: hidden;
+      color: #333;
     }
 
     .container {
@@ -33,14 +33,16 @@
       animation: slideIn 1s ease-in-out;
       max-height: 90vh;
       overflow-y: auto;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .bg-primary {
-      background: linear-gradient(135deg, #1a2a6c, #333333);
+      background: linear-gradient(135deg, #0a1f3d, #1c3a5c);
     }
 
     .bg-light {
-      background: #f5f5f5;
+      background: #f8f9fa;
     }
 
     /* Left Side Styles */
@@ -48,17 +50,20 @@
       font-size: 2.5rem;
       animation: bounceIn 1s ease-in-out;
       color: #ffffff;
+      font-weight: bold;
     }
 
     .bg-primary p {
       font-size: 1.2rem;
       animation: fadeIn 1.5s ease-in-out;
       color: #ffffff;
+      opacity: 0.9;
     }
 
-    .bg-primary .fa-users {
+    .bg-primary .fa-tools {
       animation: float 3s ease-in-out infinite;
-      color: #FF6B35;
+      color: #ff6b35;
+      font-size: 4rem;
     }
 
     /* Right Side Styles */
@@ -66,17 +71,18 @@
       border-radius: 20px;
       margin: 0 5px;
       transition: all 0.3s ease;
-      color: #1a2a6c;
+      color: #0a1f3d;
+      font-weight: 500;
     }
 
     .nav-pills .nav-link.active {
-      background: #FF6B35;
+      background: #ff6b35;
       color: #fff;
     }
 
     .nav-pills .nav-link:hover {
       transform: translateY(-3px);
-      background: #FF6B35;
+      background: #ff6b35;
       color: #fff;
     }
 
@@ -88,7 +94,7 @@
     }
 
     .form-control:focus {
-      border-color: #FF6B35;
+      border-color: #ff6b35;
       box-shadow: 0 0 5px rgba(255, 107, 53, 0.5);
     }
 
@@ -97,10 +103,11 @@
       padding: 10px;
       font-size: 1rem;
       transition: all 0.3s ease;
+      font-weight: 500;
     }
 
     .btn-primary {
-      background: #FF6B35;
+      background: #ff6b35;
       border: none;
     }
 
@@ -110,12 +117,12 @@
     }
 
     .btn-success {
-      background: #FF6B35;
+      background: #ff6b35;
       border: none;
     }
 
     .btn-success:hover {
-      background: #FF6B35;
+      background: #e65a2b;
       transform: translateY(-3px);
     }
 
@@ -123,7 +130,7 @@
     .form-label {
       font-weight: 500;
       margin-bottom: 5px;
-      color: #1a2a6c;
+      color: #0a1f3d;
     }
 
     .form-control::placeholder {
@@ -132,13 +139,21 @@
 
     /* Forgot Password Link */
     .text-end a {
-      color: #FF6B35;
+      color: #ff6b35;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .text-end a:hover {
       color: #e65a2b;
+    }
+
+    /* File Input Styles */
+    .form-control-file {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
     }
 
     /* Animations */
@@ -205,7 +220,7 @@
         <div class="col-md-6 bg-primary text-white d-flex flex-column justify-content-center align-items-center p-4">
           <h2 class="fw-bold">Welcome Back!</h2>
           <p>Log in or register to access your account.</p>
-          <i class="fas fa-users fa-5x"></i>
+          <i class="fas fa-tools fa-5x"></i>
         </div>
 
         <!-- Right Side -->
@@ -231,8 +246,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="loginPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password"
-                    required>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
                 </div>
                 <div class="mb-3 text-end">
                   <a href="#" class="text-decoration-none">Forgot Password?</a>
@@ -254,13 +268,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="registerPhone" class="form-label">Phone Number</label>
-                  <input type="tel" class="form-control" id="registerPhone" placeholder="Enter your phone number"
-                    required>
+                  <input type="tel" class="form-control" id="registerPhone" placeholder="Enter your phone number" required>
                 </div>
                 <div class="mb-3">
                   <label for="registerAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="registerAddress" placeholder="Enter your address"
-                    required>
+                  <input type="text" class="form-control" id="registerAddress" placeholder="Enter your address" required>
                 </div>
                 <div class="mb-3">
                   <label for="registerEmail" class="form-label">Email</label>
@@ -268,13 +280,16 @@
                 </div>
                 <div class="mb-3">
                   <label for="registerPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="registerPassword" placeholder="Create a password"
-                    required>
+                  <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
                 </div>
                 <div class="mb-3">
                   <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
                   <input type="password" class="form-control" id="registerConfirmPassword"
                     placeholder="Confirm your password" required>
+                </div>
+                <div class="mb-3">
+                  <label for="registerImage" class="form-label">Profile Image</label>
+                  <input type="file" class="form-control-file" id="registerImage" accept="image/*" required>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Register</button>
               </form>
@@ -292,13 +307,14 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
     import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-storage.js";
 
     // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyB2C4Djv2h0dMRluFw6NFSfQFtfkzZ6FAU",
       authDomain: "masterproject-158b4.firebaseapp.com",
       projectId: "masterproject-158b4",
-      storageBucket: "masterproject-158b4.firebasestorage.app",
+      storageBucket: "masterproject-158b4.appspot.com",
       messagingSenderId: "632368585512",
       appId: "1:632368585512:web:0a0100256c7cbd27cf8e1d",
       measurementId: "G-S33GMFE8W2"
@@ -308,6 +324,7 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const storage = getStorage(app);
 
     // Handle Login
     document.getElementById("loginForm").addEventListener("submit", async (e) => {
@@ -329,6 +346,70 @@
         Swal.fire({
           icon: 'error',
           title: 'Login Failed',
+          text: error.message,
+        });
+      }
+    });
+
+    // Handle Registration
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById("registerName").value;
+      const age = document.getElementById("registerAge").value;
+      const phone = document.getElementById("registerPhone").value;
+      const address = document.getElementById("registerAddress").value;
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+      const confirmPassword = document.getElementById("registerConfirmPassword").value;
+      const imageFile = document.getElementById("registerImage").files[0];
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Password Mismatch',
+          text: 'Passwords do not match. Please try again.',
+        });
+        return;
+      }
+
+      try {
+        // Create user with email and password
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Upload image to Firebase Storage
+        const storageRef = ref(storage, `profileImages/${user.uid}`);
+        await uploadBytes(storageRef, imageFile);
+        const imageUrl = await getDownloadURL(storageRef);
+
+        // Save additional user data to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          name: name,
+          age: age,
+          phone: phone,
+          address: address,
+          email: email,
+          profileImage: imageUrl,
+          createdAt: new Date().toISOString(),
+        });
+
+        // Show success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful',
+          text: 'Welcome to Industrial Tools Rental!',
+        });
+
+        // Redirect to login page or dashboard
+        window.location.href = "../htmlPages/homeUserPage.html";
+      } catch (error) {
+        console.error("Error registering user:", error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed',
           text: error.message,
         });
       }

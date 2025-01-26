@@ -1,312 +1,683 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Florist Template">
-    <meta name="keywords" content="Florist unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!--Font-->
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-    <!--Box Icons-->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css pages/checkOutPage.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8">
+  <meta name="description" content="Industrial Rentals - Checkout">
+  <meta name="keywords" content="Industrial Rentals, tools, equipment, rental">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!--Font-->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Figtree', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
 
+    /* Navbar Styles */
+    .navbar {
+      background-color: #2c3e50 !important;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
+
+    .logospan {
+      color: #fff;
+    }
+
+    .logospan span {
+      color: #FFA500;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #FFA500 !important;
+      transform: translateY(-3px);
+    }
+
+    .nav-link.active {
+      color: #FFA500 !important;
+      font-weight: bold;
+    }
+
+    .profile-cart {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: auto;
+    }
+
+    .profile-cart a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-cart a:hover {
+      color: #FFA500;
+      transform: translateY(-3px);
+    }
+
+    /* Checkout Section */
+    .checkout {
+      padding: 40px 0;
+    }
+
+    .checkout__form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout__form__top {
+      margin-bottom: 20px;
+    }
+
+    .checkout__form__top h4 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .checkout__form__top h6 {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .checkout__form__top h6 a {
+      color: #FFA500;
+      text-decoration: none;
+    }
+
+    .input__top {
+      margin-bottom: 20px;
+    }
+
+    .input__top input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .input__top label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+    }
+
+    .checkout__address h4 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .input__item {
+      margin-bottom: 15px;
+    }
+
+    .input__item p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .input__item input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .checkout__proceed {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout__proceed__title h4 {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .checkout__proceed__coupon {
+      margin-bottom: 20px;
+    }
+
+    .checkout__proceed__coupon p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .coupon__input {
+      display: flex;
+      gap: 10px;
+    }
+
+    .coupon__input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .coupon__input button {
+      background: #FFA500;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout__proceed__product h5 {
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .checkout__proceed__product ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checkout__proceed__product ul li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .checkout__proceed__total {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .checkout__proceed__total li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .checkout__proceed__total li span {
+      font-weight: bold;
+    }
+
+    .checkout__proceed__widget {
+      margin-bottom: 20px;
+    }
+
+    .checkout__proceed__widget label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    #checkoutBtn {
+      width: 100%;
+      background: #FFA500;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    #checkoutBtn:hover {
+      background: #e59400;
+    }
+
+    /* Footer */
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #FFA500;
+}
+
+.footer-section p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.footer-section ul li i {
+  margin-right: 0.5rem;
+  color: #FF6B35;
+}
+
+.footer-section a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #FF6B35;
+}
+
+/* Newsletter Form */
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.newsletter-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: #FF6B35;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #e65a2b;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #FFA500;
+}
+
+/* Copyright */
+.copyright {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+  
+  </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg border-bottom">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <p class="navbar-brand fw-bold">
-                <img src="../imagesHome/logo.png" alt="logo"> <span class="logospan"> <span
-                        style="color:#9F8069;">Golden</span>Touch</span>
-            </p>
-            <!-- Toggler for mobile view -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar Items -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="../htmlPages/homeUserPage.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="../htmlPages/shopPage.html">Shop</a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="../htmlPages/aboutUsPage.html">Who We Are</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" id="active-nav" href="../htmlPages/contactUsPage.html">Contact
-                            Us</a>
-                    </li>
-                    <li id="userprofile" class="nav-item">
-                        <a href="./userPage.html"><i class="fa-solid fa-user"></i></a>
-                        <!-- <a href="#"><i class="fa-solid fa-heart"></i></a> -->
-                        <a href="cartPage.html"><i class="fa-solid fa-basket-shopping"></i></a>
-                    </li>
-                </ul>
-            </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+    <div class="container-fluid">
+      <p class="navbar-brand fw-bold">
+        <span class="logospan"> <span style="color:#FFA500;">Industrial</span>Rentals</span>
+      </p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" id="active-nav" href="../htmlPages/homeUserPage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" id="rentals-link" href="../htmlPages/shopPage.html">Rentals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" id="about-us-link" href="../htmlPages/aboutUsPage.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" id="contact-us-link" href="../htmlPages/contactUsPage.html">Contact Us</a>
+          </li>
+        </ul>
+        <div class="profile-cart">
+          <a href="../htmlPages/userPage.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a href="../htmlPages/cartPage.html">
+            <i class="fa-solid fa-basket-shopping"></i> Cart
+          </a>
         </div>
-    </nav> <!--===========End nav==========-->
+      </div>
+    </div>
+  </nav>
 
-    <!-- Checkout Section Begin -->
-    <section class="checkout spad">
-        <div class="container">
-            <div class="row">
-                <!-- Left Side Form -->
-                <div class="col-lg-8">
-                    <div class="checkout__form">
-                        <form action="#">
-                            <div class="checkout__form__top">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <h4>Contact information</h4>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 text-right">
-                                        <h6>Already have an account? <a href="../htmlPages/login.html">Login</a></h6>
-                                    </div>
-                                </div>
-                            </div>
+  <!-- Checkout Section -->
+  <section class="checkout">
+    <div class="container">
+      <div class="row">
+        <!-- Left Side Form -->
+        <div class="col-lg-8">
+          <div class="checkout__form">
+            <form action="#">
+              <div class="checkout__form__top">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                    <h4>Contact information</h4>
+                  </div>
+                  <div class="col-lg-6 col-md-6 text-right">
+                    <h6>Already have an account? <a href="../htmlPages/login.html">Login</a></h6>
+                  </div>
+                </div>
+              </div>
 
-                            <div class="input__top">
-                                <input type="text" class="form-control" placeholder="Email or mobile phone number">
-                                <label for="kp">
-                                    Keep me up to date on offers
-                                    <input type="checkbox" id="kp">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+              <div class="input__top">
+                <input type="text" class="form-control" placeholder="Email or mobile phone number">
+                <label for="kp">
+                  Keep me up to date on offers
+                  <input type="checkbox" id="kp">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
 
-                            <div class="checkout__address">
-                                <h4>Shipping address</h4>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="input__item">
-                                            <p>First name<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="input__item">
-                                            <p>Last name<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input__item">
-                                            <p>Contact<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="input__item double__input">
-                                            <p>Address<span>*</span></p>
-                                            <input type="text" class="form-control" placeholder="Street address">
-                                            <br>
-                                            <input type="text" class="form-control"
-                                                placeholder="Apartment, suite, etc (optional)">
-                                        </div>
-                                        <div class="input__item">
-                                            <p>Town/City<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="input__item">
-                                            <p>Country/State<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="input__item">
-                                            <p>Postcode/Zip<span>*</span></p>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="input__item">
-                                            <p>Order note<span>*</span></p>
-                                            <input type="text" class="form-control"
-                                                placeholder="Note about your order, e.g, special note for delivery">
-                                        </div>
-                                        <label for="sv">
-                                            Save this information for next time
-                                            <input type="checkbox" id="sv">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+              <div class="checkout__address">
+                <h4>Shipping address</h4>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input__item">
+                      <p>First name<span>*</span></p>
+                      <input type="text" class="form-control">
                     </div>
-                </div>
-
-                <!-- Right Side Order Summary -->
-                <div class="col-lg-4">
-                    <div class="checkout__proceed">
-                        <div class="checkout__proceed__title">
-                            <h4>Your order</h4>
-                        </div>
-                        <div class="checkout__proceed__coupon">
-                            <p>Enter coupon code. It will be applied at checkout.</p>
-                            <div class="coupon__input">
-                                <input type="text" class="form-control" placeholder="Your code here">
-                                <button type="submit" class="btn btn-primary">APPLY</button>
-                            </div>
-                        </div>
-                        <div class="checkout__proceed__product">
-                            <h5>Products</h5>
-                            <ul>
-                                <li>1x Succulent gym <span>$21.0</span></li>
-                                <li>1x The affogato <span>$21.0</span></li>
-                                <li>1x The dublin <span>$21.0</span></li>
-                                <li>1x The green thumb <span>$21.0</span></li>
-                            </ul>
-                        </div>
-                        <ul class="checkout__proceed__total">
-                            <li>Subtotal <span>$217.00</span></li>
-                            <li>Total <span>$217.00</span></li>
-                        </ul>
-                        <div class="checkout__proceed__widget">
-                            <label for="cp">
-                                Cheque payment
-                                <input type="checkbox" id="cp">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label for="paypal">
-                                PayPal
-                                <input type="checkbox" id="paypal">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <button type="submit" id="checkoutBtn" class="site-btn btn btn-success">PROCEED TO
-                            CHECKOUT</button>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="input__item">
+                      <p>Last name<span>*</span></p>
+                      <input type="text" class="form-control">
                     </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="input__item">
+                      <p>Contact<span>*</span></p>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="input__item double__input">
+                      <p>Address<span>*</span></p>
+                      <input type="text" class="form-control" placeholder="Street address">
+                      <br>
+                      <input type="text" class="form-control" placeholder="Apartment, suite, etc (optional)">
+                    </div>
+                    <div class="input__item">
+                      <p>Town/City<span>*</span></p>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="input__item">
+                      <p>Country/State<span>*</span></p>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="input__item">
+                      <p>Postcode/Zip<span>*</span></p>
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="input__item">
+                      <p>Order note<span>*</span></p>
+                      <input type="text" class="form-control" placeholder="Note about your order, e.g, special note for delivery">
+                    </div>
+                    <label for="sv">
+                      Save this information for next time
+                      <input type="checkbox" id="sv">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
-    <!-- Checkout Section End -->
 
-    <!--===================Footer==========================-->
-    <footer class="footer">
-        <div class="footer-container">
-            <!-- Logo and Name -->
-            <div class="footer-logo">
-                <p class="navbar-brand fw-bold" id="logo-icon">
-                    <img src="../imagesHome/logo.png" alt="logo-icon"> <span class="logospan"> <span
-                            style="color:#9F8069;">Golden</span>Touch</span>
-                </p>
+        <!-- Right Side Order Summary -->
+        <div class="col-lg-4">
+          <div class="checkout__proceed">
+            <div class="checkout__proceed__title">
+              <h4>Your order</h4>
             </div>
-
-            <!-- Navigation Links -->
-            <div class="footer-links">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
+            <div class="checkout__proceed__coupon">
+              <p>Enter coupon code. It will be applied at checkout.</p>
+              <div class="coupon__input">
+                <input type="text" class="form-control" placeholder="Your code here">
+                <button type="submit" class="btn btn-primary">APPLY</button>
+              </div>
             </div>
-
-            <!-- Social Media -->
-            <div class="footer-social">
-                <span>Find Us on</span>
-                <div class="social-icons">
-                    <i class='bx bxl-facebook-square bx-sm'></i>
-                    <i class='bx bxl-instagram-alt bx-sm'></i>
-                    <i class='bx bxl-gmail bx-sm'></i>
-                    <i class='bx bxl-whatsapp bx-sm'></i>
-                </div>
+            <div class="checkout__proceed__product">
+              <h5>Products</h5>
+              <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+              </ul>
             </div>
+            <ul class="checkout__proceed__total">
+              <li>Subtotal <span id="subtotal">$0.00</span></li>
+              <li>Total <span id="total">$0.00</span></li>
+            </ul>
+            <div class="checkout__proceed__widget">
+              <label for="cp">
+                Cheque payment
+                <input type="checkbox" id="cp">
+                <span class="checkmark"></span>
+              </label>
+              <label for="paypal">
+                PayPal
+                <input type="checkbox" id="paypal">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <button type="submit" id="checkoutBtn" class="site-btn btn btn-success">PROCEED TO CHECKOUT</button>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>Copyright ©2020 All rights reserved</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>Industrial Rentals provides high-quality equipment for construction, agriculture, and industrial needs.
+            Rent with ease and efficiency.</p>
         </div>
-    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Rentals</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
 
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCfytV7PtN2LIrv8jBlqsLRGQeGtVe4LqY",
-            authDomain: "golden-f43ab.firebaseapp.com",
-            projectId: "golden-f43ab",
-            storageBucket: "golden-f43ab.firebasestorage.app",
-            messagingSenderId: "314092349099",
-            appId: "1:314092349099:web:9449b624f50ac93c5d39ee",
-            measurementId: "G-PYNZ6QXR40"
-        };
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class='bx bx-map'></i> 123 Industrial Street, City, Country</li>
+            <li><i class='bx bx-phone'></i> +123 456 7890</li>
+            <li><i class='bx bx-envelope'></i> info@industrialrentals.com</li>
+          </ul>
+        </div>
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const db = getFirestore(app);
+        <!-- Newsletter -->
+        <div class="footer-section">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
 
-        async function getCartItems() {
-            const querySnapshot = await getDocs(collection(db, "cart"));
-            let total = 0;
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
 
-            querySnapshot.forEach((doc) => {
-                const product = doc.data();
-                const productName = product.name;
-                const productPrice = product.price;
-                const productQuantity = product.quantity;
-                const productTotal = productPrice * productQuantity;
+      <!-- Copyright -->
+      <p class="copyright">&copy; 2023 Industrial Rentals. All rights reserved.</p>
+    </div>
+  </footer>
 
-                const productList = document.querySelector(".checkout__proceed__product ul");
-                const li = document.createElement("li");
-                li.innerHTML = `${productQuantity}x ${productName} <span>$${productTotal.toFixed(2)}</span>`;
-                productList.appendChild(li);
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
-                total += productTotal;
-            });
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2C4Djv2h0dMRluFw6NFSfQFtfkzZ6FAU",
+      authDomain: "masterproject-158b4.firebaseapp.com",
+      projectId: "masterproject-158b4",
+      storageBucket: "masterproject-158b4.firebasestorage.app",
+      messagingSenderId: "632368585512",
+      appId: "1:632368585512:web:0a0100256c7cbd27cf8e1d",
+      measurementId: "G-S33GMFE8W2"
+    };
 
-            const subtotal = document.querySelector(".checkout__proceed__total .subtotal");
-            const totalElement = document.querySelector(".checkout__proceed__total .total");
-            subtotal.innerHTML = `Subtotal <span>$${total.toFixed(2)}</span>`;
-            totalElement.innerHTML = `Total <span>$${total.toFixed(2)}</span>`;
-        }
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-        document.getElementById("checkoutBtn").addEventListener("click", function (e) {
-            e.preventDefault(); // Prevent form submission
+    // Function to fetch cart items from Firestore
+    async function getCartItems() {
+      const querySnapshot = await getDocs(collection(db, "cart"));
+      const cartItems = document.getElementById("cart-items");
+      let subtotal = 0;
 
-            // Simulate form validation
-            let isFormValid = true; // Set this to false to test the error alert
+      querySnapshot.forEach((doc) => {
+        const product = doc.data();
+        const productName = product.name;
+        const productPrice = product.price;
+        const productQuantity = product.quantity;
+        const productTotal = productPrice * productQuantity;
 
-            if (isFormValid) {
-                Swal.fire({
-                    title: 'Payment Successful!',
-                    text: 'Your order has been placed.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Please check your details and try again.',
-                    icon: 'error',
-                    confirmButtonText: 'Try Again'
-                });
-            }
+        // Add item to the list
+        const li = document.createElement("li");
+        li.innerHTML = `${productQuantity}x ${productName} <span>$${productTotal.toFixed(2)}</span>`;
+        cartItems.appendChild(li);
+
+        // Calculate subtotal
+        subtotal += productTotal;
+      });
+
+      // Update subtotal and total
+      document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById("total").textContent = `$${subtotal.toFixed(2)}`;
+    }
+
+    // Handle checkout button click
+    document.getElementById("checkoutBtn").addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent form submission
+
+      // Simulate form validation
+      let isFormValid = true; // Set this to false to test the error alert
+
+      if (isFormValid) {
+        Swal.fire({
+          title: 'Payment Successful!',
+          text: 'Your order has been placed.',
+          icon: 'success',
+          confirmButtonText: 'OK'
         });
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please check your details and try again.',
+          icon: 'error',
+          confirmButtonText: 'Try Again'
+        });
+      }
+    });
 
-        getCartItems();
-    </script>
-
+    // Fetch cart items on page load
+    getCartItems();
+  </script>
 </body>
 
 </html>

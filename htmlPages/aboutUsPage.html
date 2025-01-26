@@ -14,42 +14,41 @@
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="logo.png" alt="logo" width="30" height="30" class="d-inline-block align-text-top">
-        IndustrialRentals
-      </a>
+      <p class="navbar-brand fw-bold">
+        <span class="logospan"> <span style="color:#FFA500;">Industrial</span>Rentals</span>
+      </p>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link text-white" id="active-nav" href="../htmlPages/homeUserPage.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Rentals</a>
+            <a class="nav-link text-white" id="rentals-link" href="../htmlPages/shopPage.html">Rentals</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="about.html">About Us</a>
+            <a class="nav-link active text-white fw-bold position-relative" id="about-us-link" href="../htmlPages/aboutUsPage.html">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="user.html"><i class="fas fa-user"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+            <a class="nav-link text-white" id="contact-us-link" href="../htmlPages/contactUsPage.html">Contact Us</a>
           </li>
         </ul>
+        <div class="profile-cart">
+          <a href="../htmlPages/userPage.html">
+            <i class="fa-solid fa-user"></i> Profile
+          </a>
+          <a href="../htmlPages/cartPage.html">
+            <i class="fa-solid fa-basket-shopping"></i> Cart
+          </a>
+        </div>
       </div>
     </div>
   </nav>
-
   <!-- About Us Section -->
   <section class="about-us py-5">
     <div class="container">
@@ -62,10 +61,10 @@
           <p>
             Our mission is to make equipment rental easy, affordable, and efficient. With a wide range of products and a team of experienced professionals, we ensure that you get the best service and support every step of the way.
           </p>
-          <a href="contact.html" class="btn btn-primary btn-lg">Contact Us</a>
+          <a href="../htmlPages/contactUsPage.html" class="btn btn-primary btn-lg">Contact Us</a>
         </div>
         <div class="col-lg-6">
-          <img src="https://via.placeholder.com/600x400" class="img-fluid rounded" alt="About Us Image">
+          <img src="../productimages/istockphoto-2149116163-1024x1024.jpg" class="img-fluid rounded" alt="About Us Image">
         </div>
       </div>
     </div>
@@ -77,17 +76,17 @@
       <h2 class="text-center mb-5">Our Team</h2>
       <div class="row">
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Team Member 1">
+          <img src="../productimages/person1.jpg" class="rounded-circle mb-3" alt="Team Member 1">
           <h4>John Doe</h4>
           <p class="text-muted">CEO & Founder</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Team Member 2">
+          <img src="../productimages/person12.jpg" class="rounded-circle mb-3" alt="Team Member 2">
           <h4>Jane Smith</h4>
           <p class="text-muted">Operations Manager</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Team Member 3">
+          <img src="../productimages/person13.jpg" class="rounded-circle mb-3" alt="Team Member 3">
           <h4>Mike Johnson</h4>
           <p class="text-muted">Customer Support</p>
         </div>
@@ -95,9 +94,59 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer bg-dark text-white text-center py-3">
-    <p>Copyright ©2023 Industrial Rentals. All rights reserved.</p>
+   <!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>Industrial Rentals provides high-quality equipment for construction, agriculture, and industrial needs.
+            Rent with ease and efficiency.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Rentals</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class='bx bx-map'></i> 123 Industrial Street, City, Country</li>
+            <li><i class='bx bx-phone'></i> +123 456 7890</li>
+            <li><i class='bx bx-envelope'></i> info@industrialrentals.com</li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-section">
+          <h3>Subscribe to Our Newsletter</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-twitter'></i></a>
+        <a href="#"><i class='bx bxl-linkedin'></i></a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="copyright">&copy; 2023 Industrial Rentals. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Bootstrap JS -->
